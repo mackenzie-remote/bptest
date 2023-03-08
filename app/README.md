@@ -88,3 +88,18 @@ $ docker run -v$HOME/.aws:/root/.aws:ro bptest:1678284003 -h
 usage: main.py [-h] --bucket-name BUCKET_NAME
 ```
 
+### Pushing to Amazon ECR
+
+We will be pushing this to an Amazon ECR, this is a rough guide for doing this locally, in the
+real world this would be wrapped with some guardrails and CI.
+
+Login to ECR:
+
+```shell
+$ aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 533740943112.dkr.ecr.us-east-1.amazonaws.com
+```
+
+Build locally and push using buildx (for those not building on `linux/amd64`):
+
+```shell
+$ docker buildx build --platform linux/amd64 --push -t 533740943112.dkr.ecr.us-east-1.amazonaws.com/bptest:latest .
