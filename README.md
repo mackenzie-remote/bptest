@@ -187,3 +187,4 @@ $ terraform destroy
 * Fix the `darwin_arm64` provider hashes in `.terraform.lock.hcl` to support at least `linux_amd64`.
 * Add some CI to do the apply/destroy steps.
 * Add some code quality steps to CI (`terraform fmt`, linting etc)
+* Add standard org policies to the git repository branch protection rules, tagging, PR, approvals etc.
